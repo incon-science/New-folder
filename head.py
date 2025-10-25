@@ -35,6 +35,8 @@ bgImg = pygame.transform.scale(bgImg,(WIDTH,HEIGHT))
 
 platformImg = pygame.image.load("assets/platform.png").convert_alpha()
 
+tentaculeImg = pygame.image.load("assets/tentacule.png").convert_alpha()
+tentaculeImg = pygame.transform.scale(tentaculeImg,(tentaculeImg.get_width()/3,tentaculeImg.get_height()/3))
 
 eyeImg = pygame.image.load("assets/oeil_providence.png").convert_alpha()
 
