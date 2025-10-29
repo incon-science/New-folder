@@ -15,7 +15,7 @@ FramePerSec = pygame.time.Clock()
 pygame.mouse.set_visible(False)
 pygame.display.set_caption("Antichambre") 
 
-screen = pygame.display.set_mode((1920, 1080)) #mettre 0,0 pour plein ecran #,pygame.NOFRAME,32
+screen = pygame.display.set_mode((1280, 720)) #mettre 0,0 pour plein ecran #,pygame.NOFRAME,32
 
 infoObject = pygame.display.Info()
 

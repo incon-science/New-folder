@@ -18,23 +18,25 @@ for i in range(0,1):
 
 
 # Créer deux tentacules dans des directions opposées
-T1 = Tentacule((-500, 230), "east")  # Tentacule vers la droite
+T1 = Tentacule((-550, 230), "east")  # Tentacule vers la droite
 all_sprites.add(T1)
 
 P1 = Player()
 all_sprites.add(P1)
 
-T2 = Tentacule((500, 250), "west")  # Tentacule vers la gauche
+T2 = Tentacule((550, 250), "west")  # Tentacule vers la gauche
 all_sprites.add(T2)
 
-T3 = Tentacule((-500, 250), "east")  # Tentacule vers la gauche
+T3 = Tentacule((-550, 250), "east")  # Tentacule vers la gauche
 all_sprites.add(T3)
-T4 = Tentacule((500, 240), "west")  # Tentacule vers la gauche
+T4 = Tentacule((550, 240), "west")  # Tentacule vers la gauche
 all_sprites.add(T4)
-T5 = Tentacule((500, 220), "west")  # Tentacule vers la gauche
+T5 = Tentacule((550, 220), "west")  # Tentacule vers la gauche
 all_sprites.add(T5)
 
 text = Text("Viens à moi",(255,255,255),10,(WIDTH/2,HEIGHT-10),font='Lucida Console', bg_color=(0,0,0), padding=2, bg_alpha=255)
+
+
 
 
 while 1:
