@@ -3,19 +3,19 @@ from Platform import *
 from Text import *
 from Player import *
 from Camera import *
-
+from Block import *
 
 camera = Camera()
 
-for i in range(0,16):
-    for j in range(0,i+1):
-        PL = PlatformBasik((- i*100 + j*200, 60 - i*60), (75,75))
-        all_sprites.add(PL)
-        platforms.add(PL)
 
 
+PL = PlatformBasik((0,300), (1000,16))
+all_sprites.add(PL)
+platforms.add(PL)
 
 
+block = Block((0,250))
+all_sprites.add(block)
 
 P1 = Player()
 all_sprites.add(P1)
