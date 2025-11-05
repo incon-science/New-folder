@@ -7,9 +7,9 @@ from Camera import *
 
 camera = Camera()
 
-for i in range(0,3):
+for i in range(0,10):
     for j in range(0,i+1):
-        PL = PlatformBasik((- i*300 + j*600, 300 + i*300), (200,20))
+        PL = PlatformBasik((- i*100 + j*200, 60 - i*60), (75,16))
         all_sprites.add(PL)
         platforms.add(PL)
 
@@ -33,7 +33,7 @@ while 1:
         P1.controls(event)
 
     #fond noir
-    display_surf.fill((50,50,50))
+    display_surf.fill((255,255,255))
 
     #update camera
     camera.update(P1)

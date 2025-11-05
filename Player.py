@@ -47,12 +47,11 @@ class Player(Character):
             try:
                 if event.button == 0:
                     self.jump()
-                elif event.button == 1:
+                elif event.button == 2:  # Xbox X button (commonly index 2)
                     if self.stopattacking:
                         self.attacking = True
                         self.stopattacking = False
-                elif event.button in (4, 5):
-                    self.running = True
+                # Note: running is handled by the RT trigger axis (checked in movements)
             except Exception:
                 pass
 
@@ -60,9 +59,8 @@ class Player(Character):
             try:
                 if event.button == 0:
                     self.cancel_jump()
-                elif event.button in (4, 5):
-                    self.running = False
-                elif event.button == 1:
+                # Note: running is handled by the RT trigger axis (checked in movements)
+                elif event.button == 2:  # Xbox X button (commonly index 2)
                     self.stopattacking = True
             except Exception:
                 pass
@@ -104,15 +102,24 @@ class Player(Character):
                     if not (pressed_keys[K_q] or pressed_keys[K_d]):
                         self.no_move = True
 
-                # Run: check shoulder buttons or triggers (common indexes 4/5 or 6/7)
+                # Run: check RT trigger axis (common indexes: 5, 4, 2).
+                trigger_axis_candidates = (5, 4, 2)
                 run_pressed = False
-                for btn_idx in (4, 5, 6, 7):
-                    try:
-                        if self.joystick.get_numbuttons() > btn_idx and self.joystick.get_button(btn_idx):
-                            run_pressed = True
-                            break
-                    except Exception:
-                        continue
+                try:
+                    num_axes = self.joystick.get_numaxes()
+                    trigger_threshold = 0.6
+                    for ax_idx in trigger_axis_candidates:
+                        if ax_idx < num_axes:
+                            val = self.joystick.get_axis(ax_idx)
+                            # normalize from [-1,1] to [0,1]
+                            norm = (val + 1.0) / 2.0
+                            if norm > trigger_threshold:
+                                run_pressed = True
+                                break
+                except Exception:
+                    run_pressed = False
+
+                # Respect keyboard shift OR trigger
                 self.running = run_pressed or self.running
             except Exception:
                 pass
